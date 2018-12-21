@@ -5,23 +5,23 @@ ENV GOPATH="/project/go"
 ENV GUITARIST_BACKEND_PORT=1337
 
 # Install git
-# RUN apk add --update git make
+RUN apk add --update git make
 
 # Set workdir and copy files
 WORKDIR $GOPATH/src/github.com/mauhftw/go-guitarists
 COPY . $GOPATH/src/github.com/mauhftw/go-guitarists
 
 # Install dep
-# RUN go get -u github.com/golang/dep/cmd/dep
+RUN go get -u github.com/golang/dep/cmd/dep
 
 # Ensure vendor
-# RUN $GOPATH/bin/dep ensure -v
+RUN $GOPATH/bin/dep ensure -v
 
 # Copile application
-# RUN make build
+RUN make build
 
 # Expose port
-# EXPOSE $GUITARIST_BACKEND_PORT
+EXPOSE $GUITARIST_BACKEND_PORT
 
 # Run application
-# CMD ["dist/go-guitarist"]
+CMD ["dist/guitarist"]

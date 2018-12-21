@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/labstack/echo"
-	"go-guitarists/helpers"
+	"github.com/mauhftw/go-guitarists/helpers"
 )
 
 type Health struct {
