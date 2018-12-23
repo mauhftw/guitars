@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: guitarist-ing
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/target-type: instance
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/subnets: subnet-066be2cb133ee06c5,subnet-0f4273e9215430583 # public subnets
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:XXXXXXXXXXXX:certificate/720bb9d7-4771-4180-a650-7aa789af6623
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80,"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/tags: environment=dev,team=test
+spec:
+  rules:
+    - host:
+      http:
+        paths:
+          - path:
+            backend:
+              serviceName: guitarist-be
+              servicePort: 80
+    # - host: echoserver.example.com
+    #   http:
+    #     paths:
+    #       - path: /
+    #         backend:
+    #           serviceName: echoserver
+    #           servicePort: 80
+

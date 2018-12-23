@@ -6,7 +6,7 @@ ENV GOPATH="/project/go"
 ENV GUITARIST_BACKEND_PORT=1337
 
 # Install git
-RUN apk add --update git make && \
+RUN apk add --update git && \
     rm -rf /var/cache/apk/*
 WORKDIR $GOPATH/src/github.com/mauhftw/go-guitarists/
 
