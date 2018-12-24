@@ -20,6 +20,9 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
+	// Redirects HTTP to HTTPS
+	e.Pre(middleware.HTTPSRedirect())
+
 	// Routes
 	e.GET("/version", controllers.GetVersion)
 	e.GET("/health", controllers.GetHealth)

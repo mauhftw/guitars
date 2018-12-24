@@ -13,13 +13,12 @@ metadata:
     alb.ingress.kubernetes.io/tags: environment=dev,team=test
 spec:
   rules:
-    - host:
+    - host: guitar-service.tk
       http:
         paths:
-          - path:
-            backend:
-              serviceName: guitarist-be
-              servicePort: 80
+        - backend:
+            serviceName: guitarist-be
+            servicePort: 80
     # - host: echoserver.example.com
     #   http:
     #     paths:
