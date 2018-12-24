@@ -2,10 +2,10 @@ package controllers
 
 import (
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/labstack/echo"
+	"github.com/mauhftw/go-guitarists/config"
 	"github.com/mauhftw/go-guitarists/helpers"
 )
 
@@ -33,11 +33,8 @@ func GetHealth(c echo.Context) error {
 // returns the release software version
 func GetVersion(c echo.Context) error {
 
-	// This has to be managed using a configuration file
-	version := os.Getenv("GUITARISTS_RELEASE_VERSION")
-	if version == "" {
-		version = "latest"
-	}
+	// This is being managed by config.go file. I don't like using empty interfaces
+	version := config.GuitaristReleaseVersion
 
 	v := &Version{
 		Status:  "ok",
